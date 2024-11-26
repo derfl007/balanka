@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cva4pam8amos3"]
+
+[ext_resource type="PackedScene" uid="uid://b23hwoskxicqp" path="res://assets/models/table_physics.tscn" id="1_heiny"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qjhdx"]
+bounce = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ml8h7"]
+radius = 0.0304016
+
+[sub_resource type="SphereMesh" id="SphereMesh_mdp28"]
+radius = 0.03
+height = 0.06
+
+[node name="Node3D" type="Node3D"]
+
+[node name="table" parent="." instance=ExtResource("1_heiny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0123703, 0.794971, 0.805213)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.331755, 1.09197, 0.941734)
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_qjhdx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_ml8h7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_mdp28")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.845998, 0.287884, -0.448788, 0, 0.841709, 0.539932, 0.533186, -0.456781, 0.712084, -0.30941, 1.66225, 1.82157)
+fov = 66.1486
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.580916, 0.813963, 0, -0.813963, 0.580916, 0, 2.52035, 4.68838)

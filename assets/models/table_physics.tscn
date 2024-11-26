@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b23hwoskxicqp"]
+
+[ext_resource type="PackedScene" uid="uid://tpcvtnxxnaeq" path="res://assets/models/table.blend" id="1_dbrm8"]
+[ext_resource type="Script" path="res://scripts/TableControls.cs" id="2_jqm15"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kuhf0"]
+size = Vector3(0.0375977, 0.129143, 0.0374908)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_llwxv"]
+height = 0.961389
+radius = 0.0139601
+
+[node name="table" node_paths=PackedStringArray("RodLDefense") instance=ExtResource("1_dbrm8")]
+script = ExtResource("2_jqm15")
+RodLDefense = NodePath("Rod_L_Defense")
+
+[node name="Rod_L_Defense" parent="." index="1"]
+transform = Transform3D(0.998417, -0.0562397, 0, 0.0562397, 0.998417, 0, 0, 0, 1, 0.381214, 0.100199, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Rod_L_Defense" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.000514358)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rod_L_Defense/RigidBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000144482, -0.00358963, 0.136981)
+shape = SubResource("BoxShape3D_kuhf0")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="Rod_L_Defense" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rod_L_Defense/RigidBody3D2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000144482, -0.00358963, -0.137688)
+shape = SubResource("BoxShape3D_kuhf0")
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="Rod_L_Defense" index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rod_L_Defense/RigidBody3D3" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.000144482, -0.000145331, -0.00117719)
+shape = SubResource("CylinderShape3D_llwxv")
